@@ -1,0 +1,52 @@
+1. Refer official documentation for the WSL installation => https://learn.microsoft.com/en-us/windows/wsl/basic-commands
+
+2. List All Distro - "wsl -l -o" or "wsl --list --online"
+3. Install Ubuntu - wsl --install -d ubuntu
+4. Now ubuntu will be installed as a distro and is shown in start menu.
+5. Now either go to start menu and click on ubuntu or use wsl -d ubuntu
+6. If you just type "wsl", you will land in the linux system and not the ubuntu system.
+7. Access Specific Distro and Specific User using Powershel - wsl -d ubuntu -u ayush
+8. If password is asked, type "Ab@123456"
+9. Check Installed Distro and WSL Version - "wsl -l -v" or "wsl --list --verbose"
+10. Access using Root User - "wsl -d ubuntu -u root"
+11. If you want to access ubuntu with root access everytime then set default user to root "ubuntu config --default-user root"
+
+"
+C:\Users\CZ0258> wsl -l -v
+NAME                   STATE           VERSION
+docker-desktop         Stopped         2
+docker-desktop-data    Stopped         2
+Ubuntu                 Running         2
+"
+
+12. Shutdown All Distro - "wsl --shutdown"
+13. Terminate one Specific Distro - wsl -t ubuntu
+14. Check OS Information, first login to ubuntu and then - "cat /etc/os-release"
+15. Reset Root User Password
+"
+*) Type "wsl -d ubuntu -u ayush" and try to go to root using "su". If the password for root user is wrong then you cannot access the root.
+a) Access ubuntu using root => wsl -d ubuntu -u root
+b) Command to change password => passwd root
+c) Try with sudo if you get access or permission error => sudo passwd root
+"
+16. Find IP - "wsl -d ubuntu hostname -I"
+17. If you want to login to ubuntu and check IP, then "ip a"
+18. Change Hostname - "sudo nano /etc/wsl.conf", then type
+"
+[boot]
+systemd=true
+
+[network]
+hostname=ubuntu
+generateHosts=false
+" 
+19. Resolve Error Name or service not known
+"
+sudo nano /etc/hosts
+
+change all the old hostname to new hostname i.e ubuntu
+"
+20. Export Distro or Backup Distro - wsl --export distro_name destination_path
+21. Import Distro or Restore Distro - wsl --import any_name destination_path source_file_path
+22. Install Kali Linux - "wsl --install -d kali-linux"
+23. Uninstall Distro - "wsl --unregister kali-linux"
