@@ -50,3 +50,134 @@ change all the old hostname to new hostname i.e ubuntu
 21. Import Distro or Restore Distro - wsl --import any_name destination_path source_file_path
 22. Install Kali Linux - "wsl --install -d kali-linux"
 23. Uninstall Distro - "wsl --unregister kali-linux"
+
+---
+
+### **WSL 2 Requirements and Installation**
+
+**Hardware Requirements**  
+- 64-bit processor (ARM supported)  
+- 4 GB RAM minimum (16GB+ recommended)  
+- Enabled virtualization in BIOS (Intel VT-x or AMD-V)  
+
+**Software Requirements**  
+- Windows 11 or Windows 10 (build 19041 or higher)  
+
+**Installation**  
+1. Open Windows Terminal with admin privileges.  
+2. Type `wsl --install` and follow the prompts (including restart).  
+3. Set up a username and password when prompted.  
+
+---
+
+### **Basic WSL Commands**
+
+- **Launch a distro:**  
+  `wsl -d <distro name>` (e.g., `wsl -d Ubuntu`)  
+
+- **List available distros:**  
+  `wsl --list --online`  
+
+- **Install a distro:**  
+  `wsl --install <distro name>`  
+
+- **List installed distros (with details):**  
+  `wsl --list --verbose`  
+
+- **Shut down all WSL instances:**  
+  `wsl --shutdown`  
+
+- **Terminate a specific distro:**  
+  `wsl --terminate <distro name>`  
+
+- **Set default distro:**  
+  `wsl --set-default <distro name>`  
+
+- **Check WSL status:**  
+  `wsl --status`  
+
+- **Unregister (remove) a distro:**  
+  `wsl --unregister <distro name>`  
+
+---
+
+### **Accessing Files**
+
+- **From Linux to Windows:**  
+  - Access C drive: `/mnt/c`  
+  - Open current Linux directory in Windows Explorer: `explorer.exe .`  
+
+- **From Windows to Linux:**  
+  - Access Linux files via the "Linux" location in the Home bar (Windows 11).  
+
+---
+
+### **GUI Apps**
+
+- **WSLG:**  
+  Launches Linux GUI apps in the Windows environment.  
+  Example: Installing and launching Wireshark in Ubuntu.  
+
+- **Cali Linux's Winex:**  
+  Runs a full Cali desktop environment.  
+  - Install: `sudo apt install cali-win-cex`  
+  - Launch: `cex`  
+
+---
+
+### **VS Code Integration**
+
+- Seamlessly edit Linux files using VS Code in Windows.  
+- **Open a file in VS Code:** `code <file name>`  
+- **Connect VS Code to WSL:** Install the "WSL" extension.  
+
+---
+
+### **Docker**
+
+- WSL 2 can be used as the backend for Docker containers.  
+- **Installation options:**  
+  - From terminal: `sudo apt install docker.io`  
+  - Docker Desktop (provides a GUI for managing containers).  
+  - Docker Desktop can be configured to use WSL 2 instead of Hyper-V.  
+- VS Code has a Docker extension for managing containers within the editor.  
+
+---
+
+### **Virtualization Software**
+
+- Virtual Box can now use Hyper-V, allowing it to run alongside WSL 2.  
+
+---
+
+### **GPU Access**
+
+- WSL instances have access to the system's GPU.  
+  Example: Running `nvidia-smi` in Ubuntu to view GPU information.  
+
+---
+
+### **Custom Configuration**
+
+- **Local Config (per distro):**  
+  Located at `/etc/wsl.conf`  
+  Options include automount settings, network settings, user settings, etc.  
+
+- **Global Config (for all distros):**  
+  `%UserProfile%\.wslconfig` (must be created manually)  
+  Example: Changing the networking mode to "mirrored".  
+
+---
+
+### **Backing Up and Restoring**
+
+- **Exporting a distro to a tar file:**  
+  `wsl --export <distro name> <file name>.tar`  
+
+- **Importing a distro from a tar file:**  
+  `wsl --import <new distro name> <install location> <file name>.tar`  
+
+- **Connecting as a specific user:**  
+  `wsl -d <distro name> -u <username>`  
+
+---
